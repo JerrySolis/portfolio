@@ -1,0 +1,50 @@
+ <section id="projects" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-6 text-emerald-600 dark:text-emerald-300 border-b-2 border-gray-300 dark:border-gray-700 pb-2">Projects</h2>
+      <div class="grid gap-8">
+        <div *ngFor="let project of projects" 
+             class="group relative card-shimmer bg-gray-100 dark:bg-gray-800 p-6 rounded-lg 
+                    shadow-lg hover:shadow-2xl transition-all duration-300 transform 
+                    hover:-translate-y-1 overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200 
+                       group-hover:text-emerald-600 dark:group-hover:text-emerald-400 
+                       transition-colors duration-300">
+              {{ project.title }}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">{{ project.description }}</p>
+            <button (click)="openProjectDetails(project)" 
+                    class="fancy-button group-hover:animate-pulse">
+              <span class="relative z-10">View Details</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div *ngIf="selectedProject" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 backdrop-blur-sm">
+      <div class="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-lg w-full 
+           transform transition-all duration-300 ease-out scale-95 opacity-0
+           backdrop-blur-lg bg-opacity-95 dark:bg-opacity-95 shadow-2xl
+           border border-gray-200 dark:border-gray-700"
+           [class.scale-100]="selectedProject" [class.opacity-100]="selectedProject">
+        <div class="flex justify-between items-center mb-4 border-b pb-2 border-gray-300 dark:border-gray-700">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">{{ selectedProject.title }}</h3>
+          <button (click)="closeProjectDetails()" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-100 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ selectedProject.description }}</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span *ngFor="let tech of selectedProject.technologies" class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+            {{ tech }}
+          </span>
+        </div>
+        <div class="flex justify-end space-x-4">
+          <a *ngIf="selectedProject.liveLink" [href]="selectedProject.liveLink" target="_blank" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">Live Demo</a>
+          <a *ngIf="selectedProject.githubLink" [href]="selectedProject.githubLink" target="_blank" class="px-4 py-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors">GitHub</a>
+        </div>
+      </div>
+    </div>
