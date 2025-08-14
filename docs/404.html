@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Get the current URL path
+    var path = window.location.pathname;
+
+    // Construct the new URL with the base href
+    var newPath = '/portfolio/' + path.substring(path.indexOf('/portfolio/') + '/portfolio/'.length);
+
+    // Redirect to the new URL
+    window.location.replace(newPath);
+  </script>
+</head>
+<body>
+</body>
+</html>
