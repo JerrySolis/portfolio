@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ContactsComponent {
 contactInfo = {
-    email: 'jerrysolis@email.com',
+    email: 'mainjerrysolis@gmail.com',
     linkedin: 'https://linkedin.com/in/jerrysolis',
     github: 'https://github.com/jerrysolis',
   };
