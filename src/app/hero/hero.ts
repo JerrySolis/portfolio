@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeroComponent {
   personalInfo = {
-    name: 'Jerry Solis',
-    title: 'Full-Stack .NET & Angular Developer',
+    name: 'Junior Full-Stack .NET & Angular Developer',
+    title: "Hi, I'm Jerry Solis. A passionate Full-Stack .NET & Angular Developer based in Metro Manila, Philippines",
     profilePicture: 'assets/images/profile.jpg',
   };
 }
